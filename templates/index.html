@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<div class="topnav">
+      <a class="active" href={{ url_for('index') }}>Home</a>
+      <a href={{ url_for('projects') }}>Projects</a>
+      <a href={{ url_for('about') }}>About</a>
+      <a href={{ url_for('contact') }}>Contact</a>
+</div>
+
+<div>This is the hompage</div>
+
+
+{% endblock %}

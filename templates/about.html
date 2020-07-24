@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="topnav">
+      <a href={{ url_for('index') }}>Home</a>
+      <a href={{ url_for('projects') }}>Projects</a>
+      <a class="active"href={{ url_for('about') }}>About</a>
+      <a href={{ url_for('contact') }}>Contact</a>
+</div>
+ <div id="container">
+    <figure id="floated"><img class="l left" src="static/me_n_pup.jpg" alt="Me and some super cute doggo!" ></figure>
+    <div id="about_me"><p>Hi, my name is Omar. I live in Boulder, Colorado where I spend most my days doing treework
+    with the "pards". I enjoy my job, but what I really want to do is become a data scientist. This website is part
+    of my goal to join the data science world. I am currently taking CS-50: Intro to Computer Science through Harvard.
+    In week 5 we learn to use HTML, CSS, and Java; hence, this website.</p>
+    <p>I became interested in data science after a gruelling year of introspective existential dread ridden soul searching.
+    I graduate from Ithaca College May 2017 with a BS in chemistry. I immediately went back to my summer job working as a mover.
+    I made what I thought was good money moving, wanted to pay off my debt and save to move to Colorado, and I really liked the
+    job. There's something about really hard, mindless, manual labor that I enjoyed. After a year at Gentle Giant Moving Company,
+    I moved to Boulder, CO to join my best friend, Robby "Perr Bear" Tolette. My plan was to get a job in chemistry and start my
+    career.... I never did get that job in chemistry. I started working at Berkelhammer Tree Experts as an arborist in training.
+    To anyone not familiar with treework...my job for the first few months was to walk around picking up sticks. Que the introspective
+    existential dread ridden soul searching. I spent hours thinking about what I wanted to do next, how I could possibly get a job
+    in a chemistry field, and what I wanted to do with my life. I eventually interviewed with Array Biopharma for a position
+    making clinical trials drugs...I didn't get the job. More existential dread. </p>
+    </div>
+
+
+    </div>
+
+<iframe id="strava" height='240' width='450' frameborder='0' allowtransparency='true' scrolling='no'
+src='https://www.strava.com/athletes/5587295/activity-summary/58acd52e2377ddfac260879a6f107b1ae098eb04'></iframe>
+
+{% endblock %}
