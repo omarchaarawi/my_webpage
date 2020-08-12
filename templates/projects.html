@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="topnav">
+<div class="topnav" style="font-family: avenir">
       <a href={{ url_for('index') }}>Home</a>
       <a class="active"href={{ url_for('projects') }}>Projects</a>
       <a href={{ url_for('about') }}>About</a>
@@ -9,24 +9,24 @@
 </div>
 
 
-<a id="project_link" href={{ url_for('cpp') }} style= "text-decoration: none">
-    <div id = "projects">
-        <h1> C/C++ Projects</h1>
+<a id="project_link" href={{ url_for('cpp') }} >
+    <div id = "projects" style="font-family: avenir">
+        <h1 style="font-family: avenir"> C/C++ Projects</h1>
         <p id="projects_desc"> Data Structures | Optimization | Shell Development</p>
     </div>
 </a>
 
 <a id="project_link" href={{ url_for('webdev') }} style= "text-decoration: none">
     <div id = "projects">
-        <h1> Web Development</h1>
-        <p id="projects_desc"> Flask | omarseven.com | finance.com</p>
+        <h1 style="font-family: avenir"> Web Development</h1>
+        <p id="projects_desc" style="font-family: avenir"> Flask | omarseven.com | finance.com</p>
     </div>
 </a>
 
 <a id="project_link" href={{ url_for('python') }} style= "text-decoration: none">
     <div id = "projects">
-        <h1>  Python </h1>
-        <p id="projects_desc"> Data Wrangling | Cleaning | Analysis</p>
+        <h1 style="font-family: avenir">  Python </h1>
+        <p id="projects_desc" style="font-family: avenir"> Data Wrangling | Cleaning | Analysis</p>
     </div>
 </a>
 

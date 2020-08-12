@@ -71,7 +71,7 @@ h2 {
   margin: 1em;
 }
 
-#projects_desc{
+.projects_desc{
   text-align: left; font-size: 2.5vw; margin: 0.5em;
   color: rgb(0,0,0);
 }
@@ -80,10 +80,6 @@ h2 {
 #projects:hover {
   background-color: rgba(50,30,0,0.7);
   color: black;
-}
-
-#project_title{
-  font-size: 4vw; color: rgba(150,0,0);
 }
 
 #project_link{

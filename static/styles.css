@@ -6,7 +6,7 @@
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -69,16 +69,17 @@ h2 {
   text-align: left; font-size: 2vw; margin: 0.5em;
 }
 
+#project_link {
+  text-decoration: none; color: rgb(150,150,150);
+}
 
 #project_link:hover {
-  background-color: rgba(50,30,0,0.7);
+  background-color: rgba(50,30,0,0.1);
   color: black;
 }
 
 
-#project_link {
-  text-decoration: none; color: rgb(150,150,150);
-}
+
 
 #strava{
     margin: 2em;

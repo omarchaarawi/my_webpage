@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="topnav">
+<div class="topnav" style="font-family: avenir">
       <a href={{ url_for('index') }}>Home</a>
       <a href={{ url_for('projects') }}>Projects</a>
       <a class="active"href={{ url_for('about') }}>About</a>
@@ -10,7 +10,7 @@
 </div>
  <div id="container">
     <figure id="floated"><img class="l left" src="static/me_n_pup.jpg" alt="Me and some super cute doggo!" ></figure>
-    <div id="about_me">
+    <div id="about_me" style="font-family: avenir">
       <p>My name is Omar Chaarawi and I am an aspiring software developer and data scientist/engineer. I currently live in Boulder,
             Colorado where I am working as an arborist as I pursue a computer science education at CU Boulder. I first became interested
              in comp sci during an internship at MIT while I was earning my bachelor degree in chemistry at Ithaca College. I had the opportunity to
@@ -39,8 +39,6 @@
 <iframe id="strava" height='240' width='450' frameborder='0' allowtransparency='true' scrolling='no'
 src='https://www.strava.com/athletes/5587295/activity-summary/58acd52e2377ddfac260879a6f107b1ae098eb04'></iframe>
 
-<div class="footer">
-      <p>github | linkedin | other</p>
-  </div>
+
 
 {% endblock %}
