@@ -8,3 +8,8 @@
 
 // Use the following to apply changes without having to restart the app everytime
 	export FLASK_DEBUG=1
+
+
+export FLASK_APP=application.py
+export PATH=$PATH:/Users/Omar/opt/anaconda3/bin/
+export FLASK_DEBUG=1

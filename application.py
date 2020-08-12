@@ -25,3 +25,11 @@ def contact():
 def cpp():
 
     return render_template("cpp.html")
+
+@app.route("/web-development", methods = ["GET", "POST"])
+def webdev():
+    return render_template("webdev.html")
+
+@app.route("/python", methods = ["GET", "POST"])
+def python():
+    return render_template("python.html")

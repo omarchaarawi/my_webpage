@@ -7,71 +7,27 @@
       <a href={{ url_for('about') }}>About</a>
       <a href={{ url_for('contact') }}>Contact</a>
 </div>
-<h1>Projects</h1>
 
-<a id="project_link" href={{ url_for('cpp') }}>
-    <div href={{ url_for('cpp') }}  id = "projects">
-        <h1 id = "project_title"> C/C++</h1>
+
+<a id="project_link" href={{ url_for('cpp') }} style= "text-decoration: none">
+    <div id = "projects">
+        <h1> C/C++ Projects</h1>
         <p id="projects_desc"> Data Structures | Optimization | Shell Development</p>
     </div>
 </a>
 
+<a id="project_link" href={{ url_for('webdev') }} style= "text-decoration: none">
     <div id = "projects">
-        <h1 id = "project_title"> Web Development</h1>
-        <p id="projects_desc"> omarseven.com | finance_thing.com</p>
+        <h1> Web Development</h1>
+        <p id="projects_desc"> Flask | omarseven.com | finance.com</p>
     </div>
+</a>
 
-     <div id = "projects">
-        <h1 id = "project_title"> Python</h1>
-        <p id="projects_desc"> Hello this is a test
-        of a description of my project.</p>
-     </div>
-
-
-
+<a id="project_link" href={{ url_for('python') }} style= "text-decoration: none">
     <div id = "projects">
-        <h1 id = "project_title"> C/C++</h1>
-        <p id="projects_desc"> Projects include data-structures and
-        some other stuff.</p>
+        <h1>  Python </h1>
+        <p id="projects_desc"> Data Wrangling | Cleaning | Analysis</p>
     </div>
-
-    <div id = "projects">
-        <h1 id = "project_title"> Web Development</h1>
-        <p id="projects_desc"> Hello this is a test
-        of a description of my project.</p>
-    </div>
-
-     <div id = "projects">
-        <h1 id = "project_title"> Python</h1>
-        <p id="projects_desc"> Hello this is a test
-        of a description of my project.</p>
-     </div>
-
-
-
-    <div id = "projects">
-        <h1 id = "project_title"> C++</h1>
-        <p id="projects_desc"> Projects include data-structures and
-        some other stuff.</p>
-    </div>
-
-    <div id = "projects">
-        <h1 id = "project_title"> Web Development</h1>
-        <p id="projects_desc"> Hello this is a test
-        of a description of my project.</p>
-    </div>
-
-     <div id = "projects">
-        <h1 id = "project_title"> Python</h1>
-        <p id="projects_desc"> Hello this is a test
-        of a description of my project.</p>
-     </div>
-
-
-
-
-
-
-
+</a>
 
 {% endblock %}
