@@ -16,8 +16,10 @@
         background-color: rgb(38, 38, 38);
         color: white;
         text-align: center;
-        font-size: x-large;
+        font-size: 18px;
         font-family: avenir;
+        padding-top: 1%;
+
         }
        .projects_desc{
             text-align: left; font-size: 2.5vw; margin: 0.5em;
@@ -30,7 +32,6 @@
             </style>
     </head>
     <body>
-                <h1 style="color:black">omarseven.com </h1>
 <div class="topnav" style="font-family: avenir">
       <a href={{ url_for('index') }}>Home</a>
       <a class="active"href={{ url_for('projects') }}>Projects</a>
@@ -41,9 +42,11 @@
       {% block content %}{% endblock %}
         <br>
       <div class="footer">
-        <p>
+        <p> 
             <a href = "https://github.com/omarchaarawi" style="color: white">GitHub</a> |
-             <a href = https://www.linkedin.com/in/omar-chaarawi style="color: white"> LinkedIn</a>
+             <a href = https://www.linkedin.com/in/omar-chaarawi style="color: white"> LinkedIn</a> |
+             omarchaarawi@gmail.com
+
         </p>
     </div>
     </body>
