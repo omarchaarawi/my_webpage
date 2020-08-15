@@ -33,3 +33,7 @@ def webdev():
 @app.route("/python", methods = ["GET", "POST"])
 def python():
     return render_template("python.html")
+
+@app.route("/resume", methods = ["GET", "POST"])
+def resume():
+    return render_template("resume.html")

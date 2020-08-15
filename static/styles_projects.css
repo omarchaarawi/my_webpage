@@ -9,9 +9,28 @@
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 21px;
+  font-family: avenir;
+  align-content: center;
+}
+.logo{
+  height: 95px;
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+}
+.logo-hover{
+  height: 95px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
+}
+.topnav a:hover .logo-hover{
+  display: inline;
 }
 
 /* Change the color of links on hover */
@@ -20,11 +39,16 @@
   color: black;
 }
 
-/* Add a color to the active/current link */
 .topnav .active {
-  background-color: #4CAF50;
+  background-color:rgb(80,0,0);
   color: white;
 }
+
+.topnav .active-logo {
+  background-color: rgb(80,0,0);
+  color: white;
+}
+
 
 
 body {

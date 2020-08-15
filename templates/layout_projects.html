@@ -8,15 +8,7 @@
         Home Page
         </title>
         <style>
-        .header {
-            padding: 5px;
-            text-align: center;
-            background: rgb(223,225,235);
-            color: white;
-        }
-        .logo{
-                height: 5vw;
-            }
+
         .footer {
         position: fixed;
         left: 0;
@@ -41,18 +33,17 @@
             </style>
     </head>
     <body>
-        <div class="header">
-            <h1>     
-                <img class="logo" src="static/logo.png" alt="logo">
-           </h1>
-          </div>
-<div class="topnav" style="font-family: avenir">
-      <a href={{ url_for('index') }}>Home</a>
-      <a class="active"href={{ url_for('projects') }}>Projects</a>
-      <a href={{ url_for('about') }}>About</a>
-      <a href={{ url_for('contact') }}>Contact</a>
-      
-</div>
+
+          <div class="topnav" style="font-family: avenir">
+            <a href={{ url_for('index') }}>
+                  <img class="logo"  src="static/logo_white.png" alt="logo">
+                  <img class="logo-hover" src="static/logo_black.png" alt="logo">
+            </a>
+            <a  class="active" href={{ url_for('projects') }} style="padding: 32px">Projects</a>
+            <a href={{ url_for('about') }} style="padding: 32px">About</a>
+            <a href={{ url_for('resume') }} style="padding: 32px">Resume</a>
+            <a href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
+        </div>
 
       {% block content %}{% endblock %}
         <br>

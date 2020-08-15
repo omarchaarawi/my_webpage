@@ -1,26 +1,21 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <!DOCTYPE html>
 <div class="topnav" style="font-family: avenir">
-      <a class=active-logo href={{ url_for('index') }}>
+      <a href={{ url_for('index') }}>
             <img class="logo"  src="static/logo_white.png" alt="logo">
             <img class="logo-hover" src="static/logo_black.png" alt="logo">
       </a>
       <a href={{ url_for('projects') }} style="padding: 32px">Projects</a>
       <a href={{ url_for('about') }} style="padding: 32px">About</a>
-      <a href={{ url_for('resume') }} style="padding: 32px">Resume</a>
+      <a class="active" href={{ url_for('resume') }} style="padding: 32px">Resume</a>
       <a href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
 </div>
 
-<div class = "intro">
-      <p>
-            Hi, I'm Omar Chaarawi. <br>
-            I'm an aspring Software Developer, <br>
-            runner, and climber living in Boulder, Colorado.
-      </p>
+<div>
+      <img class="resume" src="static/OAC_resume.png" alt="resume">
 </div>
-
-
 {% endblock %}
 
