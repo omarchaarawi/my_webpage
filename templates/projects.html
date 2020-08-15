@@ -2,10 +2,14 @@
 
 {% block content %}
 <div class="topnav" style="font-family: avenir">
-      <a href={{ url_for('index') }}>Home</a>
-      <a class="active"href={{ url_for('projects') }}>Projects</a>
-      <a href={{ url_for('about') }}>About</a>
-      <a href={{ url_for('contact') }}>Contact</a>
+    <a href={{ url_for('index') }}>
+          <img class="logo"  src="static/logo_white.png" alt="logo">
+          <img class="logo-hover" src="static/logo_black.png" alt="logo">
+    </a>
+    <a  class="active" href={{ url_for('projects') }} style="padding: 32px">Projects</a>
+    <a href={{ url_for('about') }} style="padding: 32px">About</a>
+    <a href="static/OAC_resume.pdf" style="padding: 32px">Resume</a>
+    <a href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
 </div>
 
 
@@ -22,12 +26,13 @@
         <p id="projects_desc" style="font-family: avenir"> Flask | omarseven.com | finance.com</p>
     </div>
 </a>
-
+<!-- 
 <a class="project_link" href={{ url_for('python') }} style= "text-decoration: none">
     <div id = "projects">
         <h1 style="font-family: avenir">  Python </h1>
         <p id="projects_desc" style="font-family: avenir"> Data Wrangling | Cleaning | Analysis</p>
     </div>
 </a>
+-->
 
 {% endblock %}

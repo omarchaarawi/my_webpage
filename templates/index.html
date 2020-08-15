@@ -3,19 +3,24 @@
 {% block content %}
 <!DOCTYPE html>
 <div class="topnav" style="font-family: avenir">
-      <a class="active" href={{ url_for('index') }}>Home</a>
-      <a href={{ url_for('projects') }}>Projects</a>
-      <a href={{ url_for('about') }}>About</a>
-      <a href={{ url_for('contact') }}>Contact</a>
+      <a class=active-logo href={{ url_for('index') }}>
+            <img class="logo"  src="static/logo_white.png" alt="logo">
+            <img class="logo-hover" src="static/logo_black.png" alt="logo">
+      </a>
+      <a href={{ url_for('projects') }} style="padding: 32px">Projects</a>
+      <a href={{ url_for('about') }} style="padding: 32px">About</a>
+      <a href="static/OAC_resume.pdf" style="padding: 32px">Resume</a>
+      <a href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
 </div>
 
 <div class = "intro">
       <p>
             Hi, I'm Omar Chaarawi. <br>
             I'm an aspring Software Developer, <br>
-            Runner, and Climber living in Boulder, Colorado.
+            runner, and climber living in Boulder, Colorado.
       </p>
 </div>
 
 
 {% endblock %}
+

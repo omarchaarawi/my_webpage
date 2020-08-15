@@ -1,13 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="topnav">
-      <a  href={{ url_for('index') }}>Home</a>
-      <a href={{ url_for('projects') }}>Projects</a>
-      <a href={{ url_for('about') }}>About</a>
-      <a class="active" href={{ url_for('contact') }}>Contact</a>
-</div>
+<div class="topnav" style="font-family: avenir">
+      <a href={{ url_for('index') }}>
+            <img class="logo"  src="static/logo_white.png" alt="logo">
+            <img class="logo-hover" src="static/logo_black.png" alt="logo">
+      </a>
+      <a  href={{ url_for('projects') }} style="padding: 32px">Projects</a>
+      <a  href={{ url_for('about') }} style="padding: 32px">About</a>
+      <a href="static/OAC_resume.pdf" style="padding: 32px">Resume</a>
+      <a class="active" href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
+  </div>
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScIQio1GNFtgfBFmJFO9trlEE2aBGvT0izG3oMRAQOdBeRdmA/viewform?embedded=true"
 width="640" height="674" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<br>
+<br>
 {% endblock %}

@@ -3,36 +3,35 @@
 {% block content %}
 
 <div class="topnav" style="font-family: avenir">
-      <a href={{ url_for('index') }}>Home</a>
-      <a href={{ url_for('projects') }}>Projects</a>
-      <a class="active"href={{ url_for('about') }}>About</a>
-      <a href={{ url_for('contact') }}>Contact</a>
-      <img src="static/logo.png" alt="Girl in a jacket">
-
-
-</div>
+      <a href={{ url_for('index') }}>
+            <img class="logo"  src="static/logo_white.png" alt="logo">
+            <img class="logo-hover" src="static/logo_black.png" alt="logo">
+      </a>
+      <a  href={{ url_for('projects') }} style="padding: 32px">Projects</a>
+      <a class="active" href={{ url_for('about') }} style="padding: 32px">About</a>
+      <a href="static/OAC_resume.pdf" style="padding: 32px">Resume</a>
+      <a href={{ url_for('contact') }}  style="padding: 32px">Contact</a>
+  </div>
  <div id="container">
     <figure id="floated"><img class="l left" src="static/me_n_pup.jpg" alt="Me and some super cute doggo!" ></figure>
     <div id="about_me" style="font-family: avenir">
       <p>My name is Omar Chaarawi and I am an aspiring software developer and data scientist/engineer. I live in Boulder,
-            Colorado where I am working as an arborist while I pursue a computer science education at CU Boulder. I first became interested
-             in comp sci during an internship at MIT while I was earning my bachelor degree in chemistry at Ithaca College. I had the opportunity to
+            Colorado where I work as an arborist as I pursue a computer science education at University of Colorado Boulder. I first became interested
+             in computer science during an internship at MIT while I was earning my bachelor degree in chemistry at Ithaca College. I had the opportunity to
             work in a computational chemistry lab as an undergraduate research assistant. I was building models of molecules and using
-            some physical chemistry computations way over my head. It was some really cool stuff, and I wish I had just switched over to computer
-            science then. I ended up finishing my chemistry degree and did a little wandering while trying to determine what I really wanted to do.
-            I found a free intro to computer science course through Harvard and was absolutely hooked after completing that. I enrolled in classes
-            at CU Boulder and am planning on going through their Data Science masters program in the fall of 2021. 
+            physical chemistry computations to better understand molecular systems. The programming aspects stimulated me in a way chemistry had not. After
+             I finished my chemistry degree I enrolled in classes at CU Boulder and started a track toward a computer science education.  
       </p>
 
-      <p>While taking Harvard's CS50: Intro to Computer Science class, there was a project developing a small webpage for conducting mock trades. The site made use of 
-            API's used to pull stock data in real time and databases were used to maintain a record of user data. This was my initial exposure to 
-            building a website from scratch using a Flask framework. Omarseven.com is my personal website that I have built in an effort to represent some of my projects
-            as well as further develop my website development skills. I have some other programming projects in various languages
-            listed under the projects tab. </p>
+      <p>My first official computer science class was Harvard's CS50: Intro to Computer Science. While taking CS50 there was a project developing a
+            small webpage for conducting mock trades. The site made use of API's, used to pull stock data in real time and databases which were used to maintain 
+            a record of user data. This was my initial exposure to building a website from scratch using a Flask framework. Omarchaarawi.com is my personal 
+            website that I have built to represent some of my projects. It has also enhanced my website development skills. I have additional
+            programming projects in various languages listed under the projects tab. </p>
 
-      <p>Programming obviously requires a lot of my time, but I am still able to also do a lot of things that I love and help me maintain balance while pursueing
-            such a challenging field. I am big into running, climbing, backcountry skiing, mountain biking, and some other things the great state of Colorado is known for.
-            If you're from Colorado and have a strava add me. I am always looking for new places to run..
+      <p>By nature, programming is time consuming; however, I am able to maintain balance while I pursue this challenging field. I am a runner, 
+            climber, backcountry skier and mountain biker. I enjoy the labor of these sports much like the labor of programming. The problem solving and
+            and challenge has been rewarding for me, and I am eager to start this next phase of my career.
       </p>
     </div>
 
@@ -41,9 +40,10 @@
 
     <br>
 
+<!--
 <iframe id="strava" height='240' width='450' frameborder='0' allowtransparency='true' scrolling='no'
 src='https://www.strava.com/athletes/5587295/activity-summary/58acd52e2377ddfac260879a6f107b1ae098eb04'></iframe>
-
+-->
 
 
 {% endblock %}
