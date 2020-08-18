@@ -32,7 +32,7 @@ name the server: portfolio-server
 	enter passphrase created when creating ssh keys in step 1
 	if you want to change password type: passwd
 
-	create a non-root user my typing: adduser <user>
+	create a non-root user by typing: adduser <user>
 
 	next we must manage the firewall and all that:
 		then type: usermod -aG sudo <user>
@@ -63,26 +63,75 @@ name the server: portfolio-server
 			$ sudo apt-get install build-essential libssl-dev libffi-dev 
 
 	create a virtual environment using venv:
-		$ cd ~
-		$ mkdir flaskapp
-		$ cd flaskapp
-		$ python3.6 -m venv flaskappenv
-		$ source flaskappenv/bin/activate
+		$ git clone <git for my webpage>
+		$ python3.6 -m venv my_webpage_env
+	activate environment using 
+		$ source my_webpage_env/bin/activate
 
 	within the virtual env install necessary packages using:
-		(flaskappenv)$ pip install wheel
-		(flaskappenv)$ pip install flask
-		(flaskappenv)$ pip install uwsgi
-		(flaskappenv)$ pip install requests
+		(my_web_page)$ pip install wheel
+		(my_web_page)$ pip install flask
+		(my_web_page)$ pip install uwsgi
+		(my_web_page)$ pip install requests
 	configure uWSGI
 		create a file called wsgi.py and fill with:
 
 			# wsgi.py
 
-			from flaskapp import app
+			from application import app
 
 			if __name__ == "__main__":
    				 app.run()
 	test configuration using:
 		uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+
+	build .ini file:
+		deactivate env and 
+		open application.ini
+
+	construct a systemd file so we can run the flask app all the time:
+		type: $ sudo nano /etc/systemd/system/application.service
+
+		file should look like:
+
+			[Unit]
+			Description=uWSGI instance to serve flaskapp
+			After=network.target
+
+			[Service]
+			User=omar
+			Group=www-data
+			WorkingDirectory=/home/omar/flaskapp
+			Environment="PATH=/home/omar/flaskapp/flaskappenv/bin"
+			ExecStart=/home/omar/flaskapp/flaskappenv/bin/uwsgi --ini flaskapp.ini
+
+			[Install]
+			WantedBy=multi-user.target
+
+		now run:
+			$ sudo systemctl daemon-reload
+			$ sudo systemctl start application
+			$ sudo systemctl status application
+
+	install and configure NGINX
+		install using: sudo apt-get install nginx
+
+	type: sudo nano /etc/nginx/sites-available/application
+
+	configure file as:
+		server {
+   			listen 80;
+   		 	server_name omarchaarawi wwww.omarchaarawi.com;
+
+   			 location / {
+   		     		include uwsgi_params;
+    		   		 uwsgi_pass unix:/home/omar/my_webpage/application.sock;
+    			}
+		}
+
+	link NGINX:
+		$ sudo ln -s /etc/nginx/sites-available/application /etc/nginx/sites-enabled
+		$ sudo systemctl restart nginx
+		$ sudo systemctl status nginx
+		
 	
