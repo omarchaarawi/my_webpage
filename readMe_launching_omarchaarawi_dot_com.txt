@@ -69,69 +69,45 @@ name the server: portfolio-server
 		$ source my_webpage_env/bin/activate
 
 	within the virtual env install necessary packages using:
+		(could have used pip install -r <requirements.txt> instead)
 		(my_web_page)$ pip install wheel
 		(my_web_page)$ pip install flask
 		(my_web_page)$ pip install uwsgi
 		(my_web_page)$ pip install requests
-	configure uWSGI
-		create a file called wsgi.py and fill with:
 
-			# wsgi.py
-
-			from application import app
-
-			if __name__ == "__main__":
-   				 app.run()
-	test configuration using:
-		uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
-
-	build .ini file:
-		deactivate env and 
-		open application.ini
-
-	construct a systemd file so we can run the flask app all the time:
-		type: $ sudo nano /etc/systemd/system/application.service
-
-		file should look like:
-
-			[Unit]
-			Description=uWSGI instance to serve flaskapp
-			After=network.target
-
-			[Service]
-			User=omar
-			Group=www-data
-			WorkingDirectory=/home/omar/flaskapp
-			Environment="PATH=/home/omar/flaskapp/flaskappenv/bin"
-			ExecStart=/home/omar/flaskapp/flaskappenv/bin/uwsgi --ini flaskapp.ini
-
-			[Install]
-			WantedBy=multi-user.target
-
-		now run:
-			$ sudo systemctl daemon-reload
-			$ sudo systemctl start application
-			$ sudo systemctl status application
-
-	install and configure NGINX
-		install using: sudo apt-get install nginx
-
-	type: sudo nano /etc/nginx/sites-available/application
-
-	configure file as:
-		server {
-   			listen 80;
-   		 	server_name omarchaarawi wwww.omarchaarawi.com;
-
-   			 location / {
-   		     		include uwsgi_params;
-    		   		 uwsgi_pass unix:/home/omar/my_webpage/application.sock;
-    			}
-		}
-
-	link NGINX:
-		$ sudo ln -s /etc/nginx/sites-available/application /etc/nginx/sites-enabled
-		$ sudo systemctl restart nginx
-		$ sudo systemctl status nginx
-		
+	test the connection using:
+		flask run --host 
 	
+
+	configure nginx:
+		open sudo nano /etc/nginx/sites-enabled/portfolio_webpage and edit file as:
+			server {
+        		listen 80;
+      			server_name 165.232.52.59;
+
+       			location /static {
+                		alias /home/omar/my_webpage/static;
+        		}
+        		location / {
+               			 proxy_pass http://localhost:8000;
+                		include /etc/nginx/proxy_params;
+                		proxy_redirect off;
+        			}
+			}
+
+	next let's open traffic on port 80 and close 5000 now that testing is done:
+		sudo ufw allow http/tcp
+		sudo ufw delete allow 5000
+
+		sudo ufw enable
+
+	next let's restart nginx:
+		sudo systemctl restart nginx
+
+	run with gunicorn:
+		w specifies number of workers:
+		gunicorn -w 3 application:app
+
+
+	
+5: adding https certificates
