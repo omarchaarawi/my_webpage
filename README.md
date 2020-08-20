@@ -50,7 +50,24 @@ the new droplet name in the "[will direct to]" drop down box
 #### 4. Build the Flask APP in a virtual environment
 I already had the app all built on my personal machine so I pushed that to my repository and then cloned the
 repository on my virtual machine.
-* I first 
+* install the necessary packages
+  * sudo apt-get update
+  * sudo apt-get upgrade
+  * sudo apt-get install python3-pip
+  * sudo apt-get install python3-dev
+  * sudo apt-get install python3-setuptools
+  * sudo apt-get install python3-venv
+  * sudo apt-get install build-essential libssl-dev libffi-dev
+* Create a virtual environment using venv:
+  * python3.6 -m venv <name_of_env> (my_webpage_env)
+  * activate the environment using: "source <name_of_env/bin/activate"
+  * within the virtual env install necessary packages using the requirements folder:
+    * type: pip install -r <requirements.txt> 
+
+ 
+
+ 
+ 
 
   
 
