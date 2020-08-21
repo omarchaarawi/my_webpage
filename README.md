@@ -3,7 +3,7 @@
 ## Intro
 This is my personal webpage where I host some of my projects. It is built using a Flask framework. I built the site myself from scratch and host it from my own personal virtual server which I rent from DigitalOcean. I'll include a *Walkthrough* on how I got the site up and running. 
 
-## Launching omarchaarawi.com
+# Launching omarchaarawi.com
 I primarily used two sources for this which proved to be super helpful. Thank you [Corey Schafer](https://www.youtube.com/watch?v=goToXTC96Co) and [Peter Kazarinoff](https://pythonforundergradengineers.com/flask-app-on-digital-ocean.html#set-up-a-new-digital-ocean-droplet) for making such great tutorials on launching a website in a really safe secure way.
 ### Here are the steps I took:
 #### 1. Register an account with Digital Ocean and create a droplet (virtual server)
@@ -63,6 +63,99 @@ repository on my virtual machine.
   * activate the environment using: "source <name_of_env/bin/activate"
   * within the virtual env install necessary packages using the requirements folder:
     * type: pip install -r <requirements.txt> 
+* After creating the virtual env test the application
+  * export the project using: export FLASK_APP=applicaiton.py
+  * then type: flask run --host=0.0.0.0
+  * now when you open the browser and go to myIPADDRESS:5000 you should see the page
+* Now that things are running fine in the development server let's take er live using NGINX and Gunicorn
+* install NGINX
+  * sudo apt install nginx
+  * pip install gunicorn  (make sure you're in your virtual env)
+* update the config file for nginx
+  * remove the default NGINX config file using: sudo rm /etc/nginx/sites-enabled/default
+  * create new config file using: sudo nano /etc/nginx/sites-enabled/<file_name>
+  * this is how i configured my file:
+  
+  server {
+        server_name omarchaarawi.com www.omarchaarawi.com;
+
+        location /static {
+                alias /home/omar/my_webpage/static;
+        }
+        location / {
+                proxy_pass http://localhost:8000;
+                include /etc/nginx/proxy_params;
+                proxy_redirect off;
+        }
+
+* next open up port 80 and close 5000
+  * sudo ufw allow http/tcp
+  * sudo ufw delete allow 5000
+  * sudp ufw enable
+* restart the nginx server
+  * sudo systemctl restart nginx
+Now NGINX is running but guincorn is not so NGINX doesn't know what to do with the python application
+* run gunicorn
+  * gunicorn -w 3 <file_that_has_application>
+  
+  When determing how many workers to run we use the following formula from the gunicorn documentation: (2 x num_of_cores) + 1. I am running
+  this on a machine with 1 core so i used 3 workers.
+  
+  * run gunicorn using: gunicorn -w 3 run:app
+* now gunicorn is running, but not in the background
+* using Supervisor we can configure this to run in the background
+  * install supervisor using: sudo apt install supervisor
+  * setup config file for supervisor
+    * sudo nano /etc/supervisor/conf.d/<name_of_file>
+    * this is how i configured my file:
+    
+      [program:application]
+      
+      directory=/home/omar/my_webpage
+      
+      command=/home/omar/my_webpage/my_webpage_env/bin/gunicorn -w 3 application:app
+      
+      user=omar
+      
+      autostart=true
+      
+      autorestart=true
+      
+      stopasgroup=true
+      
+      killasgroup=true
+      
+      stderr_logfile=/var/log/my_webpage/my_webpage.err.log
+      
+      stdout_logfile=/var/log/my_webpage/my_webpage.out.log
+
+  * create a directory to save stderr file and stdout file using run: sudo mkdir -p /var/log/<name_of_file_containing_app>
+  * then run: sudo touch /var/log/<name_of_file_containing_app>/<name_of_stderr_file.err.log>
+  * then run: sudo touch /var/log/<name_of_file_containing_app>/<name_of_stderr_file.out.log>
+* restart supervisor using: sudo supervisorctl reload 
+
+Now that guicorn is running in the background all should be running fine. To add SSL security follow the following steps.
+
+#### 5. Adding SSL security so site can be run https
+
+We can use certbot to generate SSL certificates
+
+* sudo add-apt-repository ppa:certbot/certbot
+* sudo apt install python-certbot-nginx
+* sudo certbot --nginx -d mydomain.com -d www.mydomain.com
+
+I selected option 2 to redirect
+
+If this step is done correctly a little message will pop up letting you know. 
+
+run: sudo ufw delete allow 'Nginx Full'
+run: sudo ufw allow Nginx HTTPS'
+
+Finally restart nginx and supervisor for all changes to take place.
+
+
+  
+    
 
  
 
