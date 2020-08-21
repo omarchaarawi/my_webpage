@@ -14,4 +14,4 @@ export FLASK_APP=application.py
 export PATH=$PATH:/Users/Omar/opt/anaconda3/bin/
 export FLASK_DEBUG=1
 
-IP Address for portfolio server: 165.232.52.59
+IP Address for portfolio server:
